@@ -8,6 +8,8 @@ Let's practice!
 
 1. Reverse String
 2. Reverse Number
+3. Remove Duplicates
+4. Flatten Array
 
 --------------------------------------
  Useful Array methods:
