@@ -14,7 +14,8 @@ Let's practice!
 
  [...item] - spread iterable items into array
 
- isArray() - Array is NOT type Array, it is Object so this method is useful
+ Array.isArray() - Array is NOT type Array, it is Object so this method is useful
+ Array.from()
 
  filter() return new array
  reduce() return whatever you want
