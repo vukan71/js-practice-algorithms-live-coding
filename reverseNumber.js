@@ -1,4 +1,4 @@
-// Create function to reverse string:
+// Create function to reverse number:
 
 /*
 
