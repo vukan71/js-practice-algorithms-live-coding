@@ -10,7 +10,7 @@ Let's practice!
 2. Reverse Number
 3. Remove Duplicates
 4. Flatten Array
-
+5. Implement Bind
 --------------------------------------
  Useful Array methods:
 
