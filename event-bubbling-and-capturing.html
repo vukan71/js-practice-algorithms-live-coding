@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Event bubbling and capturing</title>
+</head>
+<body>
+<div>1<div>2<div>3<div>4<div>5</div></div></div></div></div>
+<section></section>
+<script>
+  let outputElement = document.querySelector('section');
+
+  let eles = document.getElementsByTagName('div');
+
+  for (var i=0; i< eles.length; i++){
+      let el = eles[i];
+      el.style.border = '1px solid red';
+      el.style.width = '100px';
+      el.style.padding = '10px';
+      el.v = (i+1);
+      el.addEventListener('click', capture, true);
+      el.addEventListener('click', bubble, false);
+  }
+
+  function output(msg){
+      outputElement.innerHTML += `${msg}<br />`
+  }
+  function capture() {
+      output('capture' + this.v)
+  }
+  function bubble() {
+      output('bubble' + this.v)
+  }
+
+
+</script>
+</body>
+</html>
