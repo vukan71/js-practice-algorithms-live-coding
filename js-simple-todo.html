@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple TODO List - JS</title>
+  <style>
+    .red {
+      color: red;
+      text-decoration: line-through;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="someDiv"><label for="newItem">New Item</label>
+    <input type="text" name="newItem" id="newItem">
+  </div>
+  <ul>
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+  </ul>
+  <script>
+
+    var newItem = document.querySelector('input');
+    var mainList = document.querySelector('ul');
+    var allListItems = document.getElementsByTagName('li')
+    
+    newItem.addEventListener('keypress', function(e){
+        if(e.keyCode === 13){
+            makeNewItem();
+        }
+    })
+
+    for(let i=0; i<allListItems.length; i++) {
+        allListItems[i].addEventListener('click', myList);
+    }
+
+    function myList() {
+        var temp = this.classList.toggle('red')
+
+        if(temp){
+           var span = document.createElement('span');
+           span.textContent = ' --- x'
+            span.addEventListener('click', function(){
+                this.parentElement.remove()
+            })
+            this.appendChild(span)
+        } else {
+            this.getElementsByTagName('span')[0].remove()
+;        }
+
+    }
+
+    function makeNewItem(){
+        var li = document.createElement('li');
+
+        var textValue = document.querySelector('input[name=newItem]').value
+        var tempNode = document.createTextNode(textValue);
+        li.appendChild(tempNode);
+        mainList.appendChild(li);
+
+        for(let i=0; i<allListItems.length; i++) {
+            allListItems[i].addEventListener('click', myList);
+        }
+    }
+
+
+  </script>
+</body>
+</html>
