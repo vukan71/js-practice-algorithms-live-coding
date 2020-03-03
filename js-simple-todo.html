@@ -2,6 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Simple TODO List - JS</title>
   <style>
     .red {
@@ -25,7 +28,7 @@
     var newItem = document.querySelector('input');
     var mainList = document.querySelector('ul');
     var allListItems = document.getElementsByTagName('li')
-    
+
     newItem.addEventListener('keypress', function(e){
         if(e.keyCode === 13){
             makeNewItem();
@@ -54,15 +57,12 @@
 
     function makeNewItem(){
         var li = document.createElement('li');
-
+        li.addEventListener('click', myList)
         var textValue = document.querySelector('input[name=newItem]').value
         var tempNode = document.createTextNode(textValue);
         li.appendChild(tempNode);
         mainList.appendChild(li);
 
-        for(let i=0; i<allListItems.length; i++) {
-            allListItems[i].addEventListener('click', myList);
-        }
     }
 
 
