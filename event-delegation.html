@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Event delegation</title>
+  <style>
+  </style>
+</head>
+<body>
+
+<ul class=”characters”>
+  <li>
+    <input type=”checkbox” data-index=”0" id=”char0">
+    <label for=”char0">Mickey</label>
+  </li>
+
+  <li>
+    <input type=”checkbox” data-index=”1" id=”char1">
+    <label for=”char1">Minnie</label>
+  </li>
+
+  <li>
+    <input type=”checkbox” data-index=”2" id=”char2">
+    <label for=”char2">Goofy</label>
+  </li>
+</ul>
+<script>
+    const characterList = document.querySelector('ul');
+    function toggleDone (event) {
+        //if (!event.target.matches('input')) return
+        console.log(event.target)
+        //We now have the correct input - we can manipulate the node here
+    }
+
+    characterList.addEventListener('click', toggleDone);
+</script>
+</body>
+</html>
