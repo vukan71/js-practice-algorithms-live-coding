@@ -28,7 +28,10 @@
     const characterList = document.querySelector('ul');
     function toggleDone (event) {
         //if (!event.target.matches('input')) return
-        console.log(event.target)
+        
+        console.log('target', event.target) // it will catch actual current element
+        console.log('currentTarget', event.currentTarget) // it will catch ul
+                      
         //We now have the correct input - we can manipulate the node here
     }
 
