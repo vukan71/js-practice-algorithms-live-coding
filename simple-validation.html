@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Validation</title>
+  <style>
+    label {
+      display: inline-block;
+      width: 200px;
+    }
+    input{
+      margin-bottom: 5px;
+    }
+    input[name='submit'] {
+      content: '\n'; display: block;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<form name="simpleForm" action=""  method="post">
+  <label for="name">Name</label>
+  <input type="text" name="name" id="name">
+  <label for="password">Password</label>
+  <input type="password" name="password" id="password">
+  <label for="selecton">Select</label>
+  <select name="selection" id="selection" name="selection">
+    <option value="option1">option 2</option>
+    <option value="option2">option 2</option>
+  </select>
+
+  <input type="submit" value="Submit" id="submit" name="submit">
+</form>
+
+<script>
+  const form = document.querySelector('form');
+  form.addEventListener('submit', validateForm);
+
+  function validateForm(e){
+      e.preventDefault()
+      var elements = document.forms['simpleForm'].children;
+      elements = [...elements]
+
+      for(var i=0; i <elements.length; i++){
+          if(elements[i].value === ''){
+              console.log(`${elements[i].type} is Empty`);
+          }
+      }
+
+      console.dir(elements)
+      return  false
+  }
+</script>
+</div>
+</body>
+</html>
