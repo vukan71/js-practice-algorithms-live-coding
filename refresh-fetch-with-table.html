@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Created Table</title>
+</head>
+<body>
+<div class="container">
+  <div class="page-header">
+    <h1>JSON to Table</h1>
+  </div>
+    <div id="tableGoesHere">
+</div><!-- container -->
+<script>
+    function refreshHandler() {
+        function refresh() {
+            return fetch('https://api.github.com/users/hadley/orgs')
+                .then(response => response.json())
+                .then(data => {
+                    var table = document.getElementById('tableGoesHere')
+                        table.innerHTML = json2table(data)}
+                    )
+        }
+        // setInterval(refresh, 600*1000); //every 10 minutes
+        setInterval(refresh, 10000); //every 10 seconds
+    }
+
+
+    function json2table(json, classes) {
+
+        var cols = Object.keys(json[0]);
+
+        var headerRow = '';
+        var bodyRows = '';
+
+        classes = classes || '';
+
+        cols.map(function(col) {
+            headerRow += '<th>' + capitalizeFirstLetter(col) + '</th>';
+        });
+
+        json.map(function(row) {
+            bodyRows += '<tr>';
+
+            cols.map(function(colName) {
+                bodyRows += '<td>' + row[colName] + '</td>';
+            })
+
+            bodyRows += '</tr>';
+        });
+
+        return `<table class="${ classes }"><thead><tr>${headerRow}</tr></thead><tbody>${bodyRows}</tbody></table>`;
+    }
+    function capitalizeFirstLetter(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+    document.onload = refreshHandler();
+</script>
+</body>
+</html>
